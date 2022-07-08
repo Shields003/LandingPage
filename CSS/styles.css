@@ -11,8 +11,9 @@
 
 /* ---- Base Rules ---- */
 body {
-     background: rgb(136,203,171);
-     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
+    background-image: url("../images/background.jpg");
+     /* background: rgb(0, 143, 74); */
+     background: linear-gradient(0deg, rgb(142, 154, 4, .9) 0%, rgb(20, 91, 2, .9) 100%);
      margin: 0;
      font-family: 'Merriweather', serif;
      color: #fff;
@@ -67,7 +68,7 @@ body {
  .navbar__menu ul {
      padding-left: 0;
      margin: 0;
-     text-align: right;
+     text-align: center;
  }
  
  .navbar__menu li {
