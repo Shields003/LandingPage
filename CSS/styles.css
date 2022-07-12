@@ -11,26 +11,23 @@
 
 /* ---- Base Rules ---- */
 body {
-    background-image: url("../images/background.jpg");
-     /* background: rgb(0, 143, 74); */
-     background: linear-gradient(0deg, rgb(142, 154, 4, .9) 0%, rgb(20, 91, 2, .9) 100%);
+     background: linear-gradient(0deg, rgb(142, 154, 4) 0%, rgb(20, 91, 2) 100%);
      margin: 0;
      font-family: 'Merriweather', serif;
      color: #fff;
  }
  
- 
  /* Typeography General*/
  h1 {
-     font-family: 'Fira Sans', sans-serif;
      font-size: 3em;
-     margin: 2em 1rem;
+     padding-bottom: 0;
+     margin-bottom: 0;
  }
  
  @media only screen and (min-width: 35em){
      h1 {
          font-size: 7em;
-         margin: 2em 4rem 1em;
+         /* margin: 2em 4rem 1em; */
      }
  }
  
@@ -39,6 +36,15 @@ body {
      font-family: 'Oxygen', Sans-Serif;
      font-size: 3em;
      color: #fff;
+ }
+
+ sub {
+        font-size: 1.8em;
+        font-family: Trattatello, fantasy;
+        color: #fff;
+        margin: 0.5em 0;
+        margin-left: 10rem;
+        margin-top: 0;
  }
  
  p {
@@ -61,25 +67,32 @@ body {
      min-height: 80vh;
  }
  
- 
  /* ---- Module Rules ---- */
  
  /* Navigation Styles*/
  .navbar__menu ul {
-     padding-left: 0;
-     margin: 0;
-     text-align: center;
+    font-size: large;
+    font-family: 'Oxygen', Sans-Serif;
+    color: beige;
+    list-style-type: none;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    padding-bottom: 1rem;
+    align-items: center;
+    
  }
  
  .navbar__menu li {
-     display: inline-block;
+   
+    margin-right: auto;
+    margin-left: auto;
  }
  
  .navbar__menu .menu__link {
-     display: block;
+     
      padding: 1em;
      font-weight: bold;
-     text-decoration: none;
      color: #000;
  }
  
@@ -91,13 +104,36 @@ body {
  
  /* Header Styles */
  .page__header {
-     background: #fff;
+    background: rgb(26, 44, 9);
      position: fixed;
      top: 0;
      width: 100%;
      z-index: 5;
+     min-height:4rem;
+     max-height: 5rem;
+     padding-top: 0rem;   
  }
  
+a:link {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: rgb(0, 250, 17);
+  }
+  
+  /* selected link */
+  a:active {
+    color: rgb(141, 220, 157);
+  }
+
  /* Footer Styles */
  .page__footer {
      background: #000;
@@ -134,7 +170,7 @@ body {
  /* Note that background circles are created with psuedo elements before and after */
  /* Circles appear to be random do to use of :nth-of-type psuedo class */
  section:nth-of-type(odd) .landing__container::before {
-     content: "20 Sided Die pic here";
+     content: "";
      background: rgba(255, 255, 255, 0.187);
      position: absolute;
      z-index: -5;
