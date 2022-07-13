@@ -1,24 +1,4 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
-
-/**
+/*
  * Define Global Variables
  * Global variables are variables that are available throughout the program.
  * They are used to store data that is needed throughout the program.
@@ -34,20 +14,6 @@
  * They are used to help the other functions.
 */
 
-const navLinks = document.querySelectorAll("nav a")
-for (let i = 0; i < navLinks.length; i++) {
-     navLinks[i].addEventListener("click", function (e) {
-          e.preventDefault()
-          const target = e.target.getAttribute("href")
-          const targetElement = document.querySelector(target)
-       
-          window.scrollTo({
-               top: top,
-               behavior: "smooth"
-          })
-     }
-     )
-}
 
 /**
  * End Helper Functions
@@ -55,12 +21,8 @@ for (let i = 0; i < navLinks.length; i++) {
  * Main functions are the ones that call the other functions.
 */
 
-const onloadFunction = function() {
-     const element1= document.getElementById("pageTop")
-     element1.scrollIntoView( {behavior: "smooth"} )   //scrolls to the section1
-}
-window.addEventListener("load", onloadFunction)
-
+// window.addEventListener("scroll", setActiveSection)
+// window.addEventListener("scroll", addActiveClass)
 
 // build the nav
 const nav = document.querySelector("nav")
@@ -71,19 +33,15 @@ nav.appendChild(navList)
 
 // Add class 'active' to section when near top of viewport
 function addActiveClass() {
-     const sections = document.querySelectorAll("section")
-     for (let i = 0; i < sections.length; i++) {
-          const section = sections[i]
-          const sectionTop = section.offsetTop
-          const sectionBottom = sectionTop + section.offsetHeight
-          const isInViewport = sectionTop <= window.scrollY + window.innerHeight && sectionBottom >= window.scrollY
+     const section = document.querySelectorAll("section")
           if (isInViewport) {
                section.classList.add("active")
+
           } else {
                section.classList.remove("active")
           }
      }
-}
+
 
 function isInViewport(elem) {
      const bounding = elem.getBoundingClientRect()
