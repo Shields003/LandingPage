@@ -21,8 +21,8 @@
  * Main functions are the ones that call the other functions.
 */
 
-// window.addEventListener("scroll", setActiveSection)
-// window.addEventListener("scroll", addActiveClass)
+window.addEventListener("scroll", setActiveSection)
+window.addEventListener("scroll", addActiveClass)
 
 // build the nav
 const nav = document.querySelector("nav")
