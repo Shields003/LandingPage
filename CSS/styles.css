@@ -155,7 +155,7 @@ a:hover {
 a:active {
   color: rgb(141, 220, 157);
   border: #eee  1px solid;
-  
+
 }
 
 /* Footer Styles */
@@ -174,6 +174,7 @@ a:active {
 .landing__container {
   padding: 1em;
   text-align: left;
+  min-height: 800px;
 }
 
 @media only screen and (min-width: 35em) {
@@ -187,6 +188,9 @@ section:nth-of-type(even) .landing__container {
   margin-right: 0;
   margin-left: auto;
   text-align: right;
+  min-height: 825px;
+  margin-top: 8em;
+  margin-bottom: 8em;
 }
 
 /* Background Circles */

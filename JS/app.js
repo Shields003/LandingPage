@@ -39,12 +39,12 @@ function addActiveClass() {
 function isInViewport(elem) {
   const bounding = elem.getBoundingClientRect();
   return (
-    bounding.top >= 0 &&
+    bounding.top >= 150 &&
     bounding.left >= 0 &&
     bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight) &&
     bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
+      (window.innerWidth)
   );
 }
 
@@ -84,32 +84,20 @@ function setActiveSection() {
     const section = sections[i];
     const sectionTop = section.offsetTop;
     const sectionBottom = sectionTop + section.offsetHeight;
+    const link = navList.children[i].firstElementChild;
     const isInViewport =
       sectionTop <= window.scrollY + window.innerHeight &&
       sectionBottom >= window.scrollY;
     if (isInViewport) {
       section.classList.add("active");
-    } else {
-      section.classList.remove("active");
-    }
-  }
-}
-
-// Set links as active
-
-function setActiveClass(event) {
-  const links = document.querySelectorAll("links");
-  for (let i = 0; i < links.length; i++) {
-    const link = links[i];
-    const linkTop = link.offsetTop;
-    const linkBottom = linkTop + link.offsetHeight;
-    const isInViewport =
-      linkTop <= window.scrollY + window.innerHeight &&
-      linkBottom >= window.scrollY;
-    if (isInViewport) {
       link.classList.add("activeLink");
     } else {
-      link.classList.remove("activeLink");
+      section.classList.remove("active");
+     link.classList.remove("activeLink");
+     
     }
   }
 }
+
+//Only show one link at a time
+

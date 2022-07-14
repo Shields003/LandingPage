@@ -1,6 +1,7 @@
-Dungeons & Dragons, a quick guide for new players.
-This inteded as basic supplimentary information.
+<p>Dungeons &amp; Dragons, a quick guide for new players.
+This inteded as basic supplimentary information.</p>
 
-No dependancies have been installed/need to be installed.
+<p>No dependancies have been installed/need to be installed.</p>
 
-Written by Chris Shields, in development.
+<p>Written by Chris Shields, in development.</p>
+
