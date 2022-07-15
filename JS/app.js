@@ -16,7 +16,8 @@
  */
 
 window.addEventListener("scroll", setActiveSection);
-window.addEventListener("scroll", addActiveClass);
+// window.addEventListener("scroll", addActiveClass);
+let currentSection = null;
 
 // Add event listeners to all links
 
@@ -27,35 +28,31 @@ navList.classList.add("nav-list");
 nav.appendChild(navList);
 
 // Add class 'active' to section when near top of viewport
-function addActiveClass() {
-  const section = document.querySelectorAll("links");
-  if (isInViewport) {
-    section.classList === "activeLink";
-  } else {
-    section.classList.remove("active");
-  }
-}
+// function addActiveClass() {
+//   const section = document.querySelectorAll("links");
+//   if (isInViewport) {
+//     section.classList === "activeLink";
+//   } else {
+//     section.classList.remove("active");
+//   }
+// }
 
 function isInViewport(elem) {
   const bounding = elem.getBoundingClientRect();
   return (
-    bounding.top >= 150 &&
+    bounding.top >= 0 &&
     bounding.left >= 0 &&
-    bounding.bottom <=
-      (window.innerHeight) &&
-    bounding.right <=
-      (window.innerWidth)
+    bounding.bottom <= window.innerHeight &&
+    bounding.right <= window.innerWidth
   );
 }
-
-
 
 /**
  * End Main Functions
  * Begin Events
  * Events are functions that are called when something happens.
  * They are used to respond to the user's actions.
- * // Scroll to anchor ID 
+ * // Scroll to anchor ID
  */
 function scrollToSection(event) {
   event.preventDefault();
@@ -64,8 +61,9 @@ function scrollToSection(event) {
   element.scrollIntoView({ behavior: "smooth" });
 }
 
-// Build menu
+// Build menu dynamically
 const sections = document.querySelectorAll("section");
+
 sections.forEach((section) => {
   const listItem = document.createElement("li");
 
@@ -77,27 +75,51 @@ sections.forEach((section) => {
   navList.appendChild(listItem);
 });
 
+const get_active_section = (sections) => {
+  let active_section = null;
+  const bottomofscreen = window.scrollY + window.innerHeight;
+  sections.forEach((section) => {
+    if (
+      !active_section ||
+      (section.offsetTop > active_section.offsetTop &&
+        section.offsetTop < bottomofscreen - 200)
+    ) {
+      active_section = section;
+    }
+  });
+  return active_section;
+};
+
 // Set sections as active
+// Only one link can be active at a time
 function setActiveSection() {
   const sections = document.querySelectorAll("section");
-  for (let i = 0; i < sections.length; i++) {
-    const section = sections[i];
+  const onscreen_sections = [];
+  sections.forEach((section) => {
     const sectionTop = section.offsetTop;
     const sectionBottom = sectionTop + section.offsetHeight;
-    const link = navList.children[i].firstElementChild;
     const isInViewport =
       sectionTop <= window.scrollY + window.innerHeight &&
       sectionBottom >= window.scrollY;
     if (isInViewport) {
-      section.classList.add("active");
-      link.classList.add("activeLink");
-    } else {
-      section.classList.remove("active");
-     link.classList.remove("activeLink");
-     
+      onscreen_sections.push(section);
     }
+  });
+  if (onscreen_sections.length > 0) {
+    currentSection = get_active_section(onscreen_sections);
+    sections.forEach((section) => {
+      section.classList.remove("active");
+    });
+    currentSection.classList.add("active");
+    const activeLink = document.querySelector(
+        `a[href="#${currentSection.id}"]`
+      ),
+      activeListItem = activeLink.parentNode;
+    navList.querySelectorAll("li").forEach((listItem) => {
+      listItem.classList.remove("activeLink");
+    });
+    activeListItem.classList.add("activeLink");
   }
 }
 
-//Only show one link at a time
 

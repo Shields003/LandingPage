@@ -18,7 +18,6 @@ body {
 
 @media only screen and (max-width: 600px) {
   body {
-   
   }
 }
 
@@ -97,12 +96,12 @@ section {
 }
 
 @media only screen and (max-width: 600px) {
-    .navbar__menu ul {
-      flex-direction: column;
-      margin: 2em 4rem 1em;
-      margin-top: 0;
-    }
+  .navbar__menu ul {
+    flex-direction: column;
+    margin: 2em 4rem 1em;
+    margin-top: 0;
   }
+}
 
 .navbar__menu li {
   display: flex;
@@ -154,8 +153,7 @@ a:hover {
 /* selected link */
 a:active {
   color: rgb(141, 220, 157);
-  border: #eee  1px solid;
-
+  border: #eee 1px solid;
 }
 
 /* Footer Styles */
@@ -299,40 +297,27 @@ section.your-active-class .landing__container::after {
 
 .active {
   border: solid 1px;
-    border-radius: 25%;
-    background: rgb(211, 28, 28);
-    background: linear-gradient(
-        0deg,
-        rgba(211, 28, 28, 0.1) 0%,
-        rgba(211, 28, 28, 0.2) 100%
-    );
-    color: rgb(199, 200, 199);
-    padding: 0.5em;
-    margin: 0.5em;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    transition: ease 0.3s all;
+  border-radius: 25%;
+  background: rgb(211, 28, 28);
+  background: linear-gradient(
+    0deg,
+    rgba(211, 28, 28, 0.1) 0%,
+    rgba(211, 28, 28, 0.2) 100%
+  );
+  color: rgb(199, 200, 199);
+
+  text-align: center;
+  text-decoration: none;
+  transition: ease 0.3s all;
 }
 
-.activeLink {
-  border: solid 1px;
-    border-radius: 25%;
-    background: rgb(211, 28, 28);
-    background: linear-gradient(
-        0deg,
-        rgba(211, 28, 28, 0.1) 0%,
-        rgba(211, 28, 28, 0.2) 100%
-    );
-    color: rgb(199, 200, 199);
-    padding: 0.5em;
-    margin: 0.5em;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    transition: ease 0.3s all;
+.activeLink > a {
+  border-radius: 25%;
+  color: rgba(255, 255, 255, 0.885);
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  transition: ease 0.3s all;
 }
 
 @media only screen and (max-width: 600px) {
@@ -340,6 +325,5 @@ section.your-active-class .landing__container::after {
     font-size: 1em;
     border: solid 1px;
     border-radius: 10%;
-
   }
 }
